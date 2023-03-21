@@ -1,0 +1,155 @@
+/*
+ *
+ * https://www.youtube.com/watch?v=1I3hMwQU6GU&t=6490s
+ *  https://www.yalco.kr/lectures/git-github/
+ *
+ */
+ 
+레포지토리 생성 후 선택 지(License 없이 레포지토리 생성시 나오는 화면)
+(License 선택 후 레포지토리 생성 하면 화면 나오지 않음
+ 해결방법 git clone 후 작업 할 것)
+echo "# https://github.com/FreedomKorea/User_Repositories.git" >> README.md
+git init
+git add README.md
+git commit -m "first commit"
+git branch -M main
+git remote add origin https://github.com/FreedomKorea/User_Repositories.git
+git push -u origin main
+
+git remote add origin https://github.com/FreedomKorea/User_Repositories.git
+git branch -M main
+git push -u origin main
+
+
+1. Git 설치
+	https://git-scm.com/ 설치 후
+	git --version
+	git config --global core.autocrlf true 
+		협업시 윈도우와 맥에서 엔터 방식 차이로 인한 오류를 방지합니다.
+
+2. SourceTree 설치
+	https://www.sourcetreeapp.com/
+
+3. VS Code 설치
+	VS Code에서 Ctrl + Shift + P
+	Select Default Profile 검색하여 선택
+	Git Bash 선택
+	
+1. Git 최초 설정
+	GitHub 계정과는 별개 
+	git config --global user.name "(본인 이름)"
+	git config --global user.email "(본인 이메일)"
+	
+	git config --global user.name
+	git config --global user.email
+	
+	기본 브랜치명 변경
+	git config --global init.defaultBranch main
+
+2. 프로젝트 생성 & Git 관리 시작
+	git init
+	폴더에 숨김모드로 .git 폴더 생성 확인
+	
+	변경사항 확인
+	git status
+	
+	.gitignore
+	
+	.gitignore 형식
+	https://git-scm.com/docs/gitignore 참조
+	# 이렇게 #를 사용해서 주석
+	# 모든 file.c
+	file.c
+  # 최상위 폴더의 file.c
+  /file.c
+  # 모든 .c 확장자 파일
+  *.c
+  # .c 확장자지만 무시하지 않을 파일
+  !not_ignore_this.c
+  # logs란 이름의 파일 또는 폴더와 그 내용들
+  logs
+  # logs란 이름의 폴더와 그 내용들
+  logs/
+  # logs 폴더 바로 안의 debug.log와 .c 파일들
+  logs/debug.log
+  logs/*.c
+  # logs 폴더 바로 안, 또는 그 안의 다른 폴더(들) 안의 debug.log
+  logs/**/debug.log
+	
+	변경사항 확인
+	git status
+	
+	파일 하나 담기
+	git add file
+	
+	모든 파일 담기
+	git add .
+	
+	2. 타임캡슐 묻기
+	git commit
+	
+	vi
+	작업 				Vi 명령어 				상세
+	입력 시작	 				i 		명령어 입력 모드에서 텍스트 입력 모드로 전환
+	입력 종료 				ESC 	텍스트 입력 모드에서 명령어 입력 모드로 전환
+	저장 없이 종료 		:q 	
+	저장 없이 강제 종료 :q! 	입력한 것이 있을 때 사용
+	저장하고 종료 			:wq 	입력한 것이 있을 때 사용
+	위로 스크롤 				k 		git log등에서 내역이 길 때 사용
+	아래로 스크롤 			j 		git log등에서 내역이 길 때 사용
+	
+	커밋 메시지까지 함께 작성하기
+	git commit -m "FIRST MESSAGE"
+	
+	아래 명령어와 소스트리로 확인
+	git log
+	
+	Lesson 2. Github 시작하기
+	1. github.com 살펴보기
+    Git으로 관리되는 프로젝트의 원격 저장소
+
+	2. 가입하고 토큰 만들기
+    Sign Up으로 가입 후 로그인
+    Personal access token 만들기
+        우측 상단의 프로필 - Settings
+        Developer Settings
+        Personal access tokens - Generate new token
+        repo 및 원하는 기능에 체크, 기간 설정 뒤 Generate token
+        토큰 안전한 곳에 보관해 둘 것
+    토큰 컴퓨터에 저장하기
+        윈도우 가이드
+            Windows 자격 증명 관리자
+            Windows 자격 증명 선택
+            git:https://github.com 자격 정보 생성
+            사용자명과 토큰 붙여넣기
+        맥 가이드 (링크)
+            Keychain Access 앱 실행
+            github의 인터넷 암호 항목 선택
+            사용자명(계정 칸)과 토큰(암호 보기 누른 뒤 오른쪽 칸) 붙여넣기
+						
+	1. 로컬에 원격 저장소 추가 후 푸시
+		GitHub 레포지토리 생성 후 복붙 명령어
+		git remote add origin (원격 저장소 주소) 
+		
+    로컬의 Git 저장소에 원격 저장소로의 연결 추가
+    원격 저장소 이름에 흔히 origin 사용. 다른 것으로 수정 가능
+		git branch -M main
+		GitHub 권장 - 기본 브랜치명을 main으로
+		
+		git push -u origin main
+		로컬 저장소의 커밋 내역들 원격으로 push(업로드)
+		
+		원격 목록 보기
+		git remote
+		자세히 보기: git remote -v
+		
+		원격 지우기 (로컬 프로젝트와의 연결만 없애는 것. GitHub의 레포지토리는 지워지지 않음)
+		git remote remove (origin 등 원격 이름)
+		
+		2. GitHub에서 프로젝트 다운받기
+
+    Download ZIP: 파일들만 다운받음, Git 관리내역 제외
+    Git clone: Git 관리내역 포함 다운로드
+		
+		터미널이나 Git Bash에서 대상 폴더 이동 후
+		git clone (원격 저장소 주소)
